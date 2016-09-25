@@ -4,7 +4,7 @@ module DnD
     die_string.downcase!
     die_string.chomp!
     number, die = die_string.split("d").map(&:to_i)
-    number * ( 1 + rand(die) )
+    number.times.map { (1..die).to_a.sample }.inject(&:+)
   end
 
   def self.stat
